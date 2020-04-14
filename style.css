@@ -1,0 +1,33 @@
+textarea {
+	resize: none;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+.console:after {
+	content: ".";
+	color: transparent;
+	box-sizing: border-box;
+	display: inline-block;
+	border-bottom: 4px solid #fff;
+	transform: translateY(-4px);
+}
+
+::selection {
+	background: #1abc9c; /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+	background: #1abc9c; /* Gecko Browsers */
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
