@@ -10,6 +10,11 @@ function evalBF(bfcode) {
 	var out=false;
 	// Loop through code (one command per milisecond)
 	var pos=0;
+
+	// Delete useless non-bf characters
+	bfcode=bfcode.replace(/[^\[\]<>\+\-\,\.!]+/g,"");
+	// Counting the number of iterations
+	var iterations=0;
 	const interval=setInterval(() => {
 		switch(bfcode[pos]) {
 			case "[":
@@ -21,12 +26,12 @@ function evalBF(bfcode) {
 				if(stack[stackPointer]) pos=bracketPreviousPos[bracketPreviousPos.length-1]
 				else bracketPreviousPos.pop();
 			} else {
-				throw new Error("Cannot find matching opening bracket!");
+				throw -100;
 			}
 			break;
 			case ">":
 			if(stackPointer++>=stack.length) {
-				throw new Error("Data pointer exceded maximum memory allowed!");
+				throw -10;
 			}
 			if(stackPointer>=bufferUsed) bufferUsed=stackPointer;
 			break;
@@ -34,7 +39,7 @@ function evalBF(bfcode) {
 			if(stackPointer) {
 				stackPointer--;
 			} else {
-				throw new Error("Data pointer passed zero!");
+				throw -50;
 			}
 			break;
 			case "+":
@@ -48,12 +53,19 @@ function evalBF(bfcode) {
 			break;
 			case ".":
 			output(String.fromCharCode(stack[stackPointer]));
+			break;
 			case "!":
 			out=true;
 		}
 		if(pos++>=bfcode.length) out=true;
 		if(out) {
+			// Do something with iterations...
+			// Do something with total memory buffer used...
+
+			// ...and clear the interval
 			clearInterval(interval);
+			console.log("Done!");
 		}
+		iterations++;
 	},1);
 }
