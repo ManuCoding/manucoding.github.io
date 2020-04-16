@@ -2,7 +2,7 @@ textarea {
 	resize: none;
 }
 
-textarea:focus {
+textarea:focus, button:focus {
 	outline: none;
 }
 
