@@ -6,6 +6,10 @@ textarea:focus, button:focus {
 	outline: none;
 }
 
+button {
+	cursor: pointer;
+}
+
 button:hover {
 	background-color: #1abc9c;
 }
@@ -34,7 +38,4 @@ button:hover {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-button {
-	cursor: pointer;
 }
