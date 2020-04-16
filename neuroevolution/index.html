@@ -3,35 +3,37 @@
 <html lang="en" style="height:100%;">
 	<head>
 		<title>manucoding.github.io</title>
-		
+
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
+
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
-		
+
 		<link rel="stylesheet" href="style.css">
 	</head>
-	
+
 	<body class="w3-flat-wet-asphalt" style="height:100%;">
-		<table class="w3-table" style="height:80%;">
+		<table class="w3-table" style="height:100%;">
 			<tr>
-				<th class="w3-xlarge w3-padding w3-center w3-flat-midnight-blue noselect" style="height:1%;">BF code editor</th>
-				<th class="w3-xlarge w3-padding w3-center w3-flat-midnight-blue noselect" style="height:1%;">Console</th>
+				<th class="w3-xlarge w3-padding w3-center w3-flat-midnight-blue noselect">BF code editor</th>
+				<th class="w3-xlarge w3-padding w3-center w3-flat-midnight-blue noselect">Console</th>
 			</tr>
-			<tr>
+			<tr style="width:100%;height:100%;">
 				<td><textarea id="editor" class="w3-padding w3-flat-midnight-blue w3-border-0 w3-round" style="width:100%;height:100%;" spellcheck="false">This is the editor.</textarea></td>
 				<td><textarea id="console" class="w3-padding w3-flat-midnight-blue w3-border-0 w3-round" style="width:100%;height:100%;" spellcheck="false" disabled>> This is the console.</textarea></td>
 			</tr>
 			<tr>
-				<td><button id="clearEditor" class="w3-bar-item w3-padding w3-flat-midnight-blue w3-border-0 w3-round">Clear</button></td>
-				<td><button id="runCode" class="w3-bar-item w3-margin-left w3-padding w3-flat-midnight-blue w3-border-0 w3-round">Run</button></td>
+				<td>
+					<button id="clearEditor" class="w3-padding w3-flat-midnight-blue w3-border-0 w3-round" onclick="clearEditor()">Clear</button>
+				</td>
+				<td>
+					<button id="clearConsole" class="w3-padding w3-flat-midnight-blue w3-border-0 w3-round" onclick="clearConsole()">Clear</button>
+					<button id="runCode" class="w3-padding w3-flat-midnight-blue w3-border-0 w3-round" onclick="if(editor.value) evalBF(editor.value)">Run</button>
+				</td>
 			</tr>
 		</table>
-		
-		<!-- <div class="w3-bar w3-container">
-			<button id="clearEditor" class="w3-bar-item w3-padding w3-flat-midnight-blue w3-border-0 w3-round">Clear</button>
-			<button id="console" class="w3-bar-item w3-margin-left w3-padding w3-flat-midnight-blue w3-border-0 w3-round">Run</button>
-		</div> -->
+		<script src="script.js"></script>
+		<script src="bf-eval.js"></script>
 	</body>
 </html>
