@@ -17,6 +17,10 @@ function evalBF(bfcode) {
 	var iterations=0;
 	const interval=setInterval(() => {
 		if(waitingForInput) return null;
+		if(receivedInput) {
+			stack[stackPointer]=inputChr.charCodeAt();
+			receivedInput=false;
+		}
 		switch(bfcode[pos]) {
 			case "[":
 			bracketPreviousPos.push(pos);
