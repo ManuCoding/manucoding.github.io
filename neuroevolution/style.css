@@ -2,19 +2,21 @@ textarea {
 	resize: none;
 }
 
-textarea:focus, button:focus {
+textarea:focus, button:focus, input:focus {
 	outline: none;
 }
 
 button {
 	cursor: pointer;
+	transition: background-color 200ms;
 }
 
 button:hover {
 	background-color: #1abc9c;
 }
 
-.console:after {
+/* Only exists if requesting char input */
+#console #charInput:focus ~ #output:after {
 	content: ".";
 	color: transparent;
 	box-sizing: border-box;
@@ -40,11 +42,18 @@ button:hover {
 	-ms-user-select: none;
 	user-select: none;
 }
-button {
-	cursor: pointer;
-}
 .code {
 	font-family: consolas;
+}
+#charInput {
+	position: absolute;
+	background: transparent;
+	font: inherit;
+	border: 0px;
+	padding: 0px;
+	display: block;
+	color: inherit;
+	caret-color: transparent;
 }
 
 
