@@ -1,0 +1,70 @@
+/* Editor default theme */
+codebob-editor {
+	background: #fff;
+	color: #ddd;
+}
+cb-cursor {
+	border-left: 1px solid #ddd;
+}
+cb-chr.string {color: #00c8ff}
+/* Editor default dark theme (when adding the .cb-dark class) */
+codebob-editor.cb-dark {
+	background: #202020;
+}
+codebob-editor.cb-dark cb-cursor {
+	border-left-color: #eee;
+}
+/* Editor Mechanics */
+codebob-editor {
+	overflow: hidden;
+	width: 100%;
+	height: 300px;
+
+	/* The '--gutter-width' can be changed,
+	 * default to 30px. */
+	--gutter-width: 30px;
+}
+codebob-editor, codebob-editor * {
+	display: block;
+	position: relative;
+	font-family: consolas,monospace;
+	box-sizing: border-box;
+}
+
+cb-measure {
+	position: absolute;
+	top: -100px;
+	visibility: hidden;
+}
+cb-scroll, cb-display, cb-selects, cb-cursors, cb-gutters, cb-lines {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+cb-display {
+	position: relative;
+}
+codebob-editor[line-numbers] cb-scroll {
+	padding-left: 30px;
+	padding-left: var(--gutter-width);
+}
+cb-cursors, cb-gutters {
+	/* opacity: 0; */
+}
+codebob-editor[focused] cb-cursors, codebob-editor[line-numbers] cb-gutters {
+	opacity: 1;
+}
+cb-cursor {
+	position: absolute;
+	width: 0px;
+}
+cb-gutters {
+	left: -30px;
+	left: calc(-1 * var(--gutter-width));
+	width: 30px;
+	width: var(--gutter-width);
+}
+cb-line {
+
+}
