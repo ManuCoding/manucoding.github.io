@@ -1,21 +1,34 @@
-document.getElementById('runCode').addEventListener('click', function() {
-  let code = documment.getElementById('editor').innerHTML;
+var editor=document.getElementById("editor"),
+consOutput=document.querySelector("#console div#output"),
+consInput=document.querySelector("#console input");
 
-  try {
-    evalBF(code);
-  } catch(error) {
-    console.error(error);
-  }
-});
+var waitingForInput=false,
+receivedInput=false,
+inputChr="",
+consoleText=">";
+function input() {
+	waitingForInput=true;
+	consInput.focus();
+}
 
-document.getElementById('clearEditor').addEventListener('click', function() {
-  documment.getElementById('editor').innerHTML = '';
-});
+function output(chr) {
+	consoleText+=chr;
+	consOutput.innerText=consoleText;
+}
+function clearConsole() {
+	consoleText=">";
+	consOutput.innerText=">";
+}
+function clearEditor() {
+	editor.value="";
+}
 
-document.getElementById('clearConsole').addEventListener('click', function() {
-  documment.getElementById('console').innerHTML = '';
-});
+function runCode() {
+	let code = documment.getElementById('editor').innerText;
 
-function output(str) {
-  document.getElementById('console').innerHTML += str;
+	try {
+		evalBF(code);
+	} catch(error) {
+		console.error(error);
+	}
 }

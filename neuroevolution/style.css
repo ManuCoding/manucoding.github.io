@@ -15,12 +15,19 @@ button:hover {
 }
 
 .console:after {
-	content: ".";
+	content: "_";
 	color: transparent;
 	box-sizing: border-box;
 	display: inline-block;
-	border-bottom: 4px solid #fff;
+	border-bottom: 2px solid #fff;
 	transform: translateY(-4px);
+	animation: blinking 0.7s infinite;
+}
+
+@keyframes blinking {
+  0% {border-bottom: 2px solid #fff;}
+  50% {border-bottom: 2px solid transparent;}
+	100% {border-bottom: 2px solid #fff;}
 }
 
 ::selection {
