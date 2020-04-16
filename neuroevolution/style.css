@@ -39,3 +39,9 @@ button:hover {
 	-ms-user-select: none;
 	user-select: none;
 }
+button {
+	cursor: pointer;
+}
+.code {
+	font-family: consolas;
+}
