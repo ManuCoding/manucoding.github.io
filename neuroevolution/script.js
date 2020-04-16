@@ -8,6 +8,14 @@ document.getElementById('runCode').addEventListener('click', function() {
   }
 });
 
-output(str) {
+document.getElementById('clearEditor').addEventListener('click', function() {
+  documment.getElementById('editor').innerHTML = '';
+});
+
+document.getElementById('clearConsole').addEventListener('click', function() {
+  documment.getElementById('console').innerHTML = '';
+});
+
+function output(str) {
   document.getElementById('console').innerHTML += str;
 }
