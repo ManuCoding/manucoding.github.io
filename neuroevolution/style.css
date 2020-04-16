@@ -35,3 +35,6 @@ button:hover {
 	-ms-user-select: none;
 	user-select: none;
 }
+button {
+	cursor: pointer;
+}
