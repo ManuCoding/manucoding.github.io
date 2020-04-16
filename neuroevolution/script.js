@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var editor=document.getElementById("editor"),
 consOutput=document.querySelector("#console div#output"),
 consInput=document.querySelector("#console input");
@@ -19,18 +18,17 @@ function output(chr) {
 function clearConsole() {
 	consoleText=">";
 	consOutput.innerText=">";
-=======
-document.getElementById('runCode').addEventListener('click', function() {
-  let code = documment.getElementById('editor').innerHTML;
+}
+function clearEditor() {
+	editor.value="";
+}
 
-  try {
-    evalBF(code);
-  } catch(error) {
-    console.error(error);
-  }
-});
+function runCode() {
+	let code = documment.getElementById('editor').innerText;
 
-output(str) {
-  document.getElementById('console').innerHTML += str;
->>>>>>> 1b9a39193816df5c371f70612c1c3695ccbedeff
+	try {
+		evalBF(code);
+	} catch(error) {
+		console.error(error);
+	}
 }
