@@ -6,7 +6,7 @@ textarea:focus, button:focus {
 	outline: none;
 }
 
-.console:after {
+#console:after {
 	content: ".";
 	color: transparent;
 	box-sizing: border-box;
