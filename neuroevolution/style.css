@@ -6,7 +6,11 @@ textarea:focus, button:focus {
 	outline: none;
 }
 
-#console:after {
+button:hover {
+	background-color: #1abc9c;
+}
+
+.console:after {
 	content: ".";
 	color: transparent;
 	box-sizing: border-box;
@@ -30,8 +34,4 @@ textarea:focus, button:focus {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-
-button {
-	cursor: pointer;
 }

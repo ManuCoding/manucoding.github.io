@@ -2,8 +2,12 @@ textarea {
 	resize: none;
 }
 
-textarea:focus {
+textarea:focus, button:focus {
 	outline: none;
+}
+
+button:hover {
+	color: #1abc9c;
 }
 
 .console:after {
