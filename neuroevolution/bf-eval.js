@@ -16,6 +16,7 @@ function evalBF(bfcode) {
 	// Counting the number of iterations
 	var iterations=0;
 	const interval=setInterval(() => {
+		if(waitingForInput) return null;
 		switch(bfcode[pos]) {
 			case "[":
 			bracketPreviousPos.push(pos);
