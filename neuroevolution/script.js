@@ -24,7 +24,7 @@ function clearEditor() {
 }
 
 function runCode() {
-	let code = documment.getElementById('editor').innerText;
+	let code = document.getElementById('editor').innerText;
 
 	try {
 		evalBF(code);
