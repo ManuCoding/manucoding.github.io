@@ -1,6 +1,9 @@
 var editor=document.getElementById("editor"),
-consOutput=document.querySelector("#console div#output"),
-consInput=document.querySelector("#console input");
+/*consOutput=document.querySelector("#console div#output"),
+consInput=document.querySelector("#console input");*/
+
+consOutput=document.querySelector("#console"),
+consInput=document.querySelector("#console");
 
 var waitingForInput=false,
 receivedInput=false,

@@ -12,10 +12,14 @@ function evalBF(bfcode) {
 	var pos=0;
 
 	// Delete useless non-bf characters
-	bfcode=bfcode.replace(/[^\[\]<>\+\-\,\.!]+/g,"");
+	bfcode=bfcode.replace(/[^\[\]<>\+\-\,\.!*]+/g,"");
 	// Counting the number of iterations
 	var iterations=0;
-	const interval=setInterval(() => {
+
+	var timeStart = Date.now();
+
+	//const interval=setInterval(() => {
+	while (!out) {
 		if(waitingForInput) return null;
 		if(receivedInput) {
 			stack[stackPointer]=inputChr.charCodeAt();
@@ -36,6 +40,8 @@ function evalBF(bfcode) {
 			break;
 			case ">":
 			if(stackPointer++>=stack.length) {
+				console.log(stack);
+				console.log(pos + ' : ' + bfcode);
 				throw -10;
 			}
 			if(stackPointer>=bufferUsed) bufferUsed=stackPointer;
@@ -58,9 +64,13 @@ function evalBF(bfcode) {
 			break;
 			case ".":
 			output(String.fromCharCode(stack[stackPointer]));
+			//output(stack[stackPointer] + ', ');
 			break;
 			case "!":
 			out=true;
+			break;
+			case "*":
+			console.log("\n[" + pos + "]" + stack);
 		}
 		if(pos++>=bfcode.length) out=true;
 		if(out) {
@@ -68,9 +78,12 @@ function evalBF(bfcode) {
 			// Do something with total memory buffer used...
 
 			// ...and clear the interval
-			clearInterval(interval);
-			console.log("Done!");
+			//clearInterval(interval);
+
+			var timeEnd = Date.now();
+
+			console.log((timeEnd - timeStart) / 1000 + 's');
 		}
 		iterations++;
-	},1);
+	}//,0);
 }
