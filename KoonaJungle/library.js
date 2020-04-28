@@ -7,6 +7,7 @@
 		[global.width,global.height]=[width,height];
 		[library.width,library.height]=[width,height];
 		[canvas.width,canvas.height]=[width,height];
+		typeof global.onresize=="function" ? global.onresize(width,height) : null;
 	}
 	var toLoad=0,
 	loaded=0;
@@ -26,6 +27,9 @@
 		rect(x,y,w,h) {
 			ctx.fillRect(x,y,w,h);
 		},
+		cut(x,y,w,h) {
+			ctx.clearRect(x,y,w,h);
+		},
 		background(r,g,b,a) {
 			var fill=ctx.fillStyle;
 			document.body.style.background=library.fill(r,g,b,a);
@@ -36,12 +40,16 @@
 			var img=new Image(src);
 			toLoad++;
 			img.onload=function() {
-				img.ready=true;
+				img.loaded=true;
 				loaded++;
 			};
-			img.ready=false;
+			img.loaded=false;
 			img.src=src;
 			return img;
+		},
+		image(img,dx,dy,dw,dh,sx,sy,sw,sh) {
+			var i=ctx.drawImage;
+			return img ? (img.loaded || img instanceof Image) ? null : isNaN(sh) ? isNaN(dh) ? (isNaN(dx) || isNaN(dy)) ? null : i(img,dx,dy) : i(img,dx,dy,dw,dh) : i(img,sx,sy,sw,sh,dx,dy,dw,dh) : null;
 		}
 	}) global[thing]=library[thing];
 	var frame=global.requestAnimationFrame;
@@ -49,12 +57,13 @@
 	function draw() {
 		if(doc.clientWidth!=global.width || doc.clientHeight!=global.height) resize(doc.clientWidth,doc.clientHeight);
 		try {
-			typeof global.draw=="function" ? global.draw() : null;
+			if(toLoad<=loaded) typeof global.draw=="function" ? global.draw() : null;
 		} catch(e) {
 			if(errorCount<20) console.error(e);
 			errorCount++;
 		}
 		if(errorCount<100) frame(draw);
 	}
+	resize(doc.clientWidth,doc.clientHeight);
 	draw();
 })(this);
