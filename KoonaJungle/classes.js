@@ -1,4 +1,4 @@
-class spritesheet {
+class Spritesheet {
 	constructor(sprite, aX, aY, fW, fH) { // respectivement animation X, animation Y, frame width, frame height
 		this.init(sprite, aX, aY, fW, fH);
 	}
@@ -13,7 +13,7 @@ class spritesheet {
 	}
 }
 
-class entity {
+class Entity {
 	constructor() {
 
 	}
@@ -27,11 +27,11 @@ class entity {
 	}
 }
 
-class player extends entity {
+class Player extends Entity {
 
 }
 
-/*class animations {
+/*class Animations {
 	constructor(spritesheet, x, y, animations = [{name: "", frames: [{x: 0, y: 0, w: 0, h: 0}]}]) {
 	this.init(spritesheet, animations);
 	}
