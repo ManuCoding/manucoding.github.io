@@ -1,18 +1,37 @@
 class spritesheet {
-  constructor(spritesheet, aX, aY, fW, fH) {
-    this.init(spritesheet, animations);
+  constructor(sprite, aX, aY, fW, fH) { // respectivement animation X, animation Y, frame width, frame height
+    this.init(sprite, aX, aY, fW, fH);
   }
 
-  init(spritesheet, animations) {
-    this.sheet = loadImage(spritesheet); // la fonction de Manu pour charger une image
+  init(sprite, aX, aY, fW, fH) {
+    this.sheet = loadImage(sprite), // la fonction de Manu pour charger une image
+    this.aX = aX, this.aY = aY, this.fW = fW, this.fH = fH;
+  }
 
-    this.animations = animations.foreach(function(animation, index) {
-      animation.currentFrame = 0;
-    });
+  draw(id, frame, x, y, scale) {
+    image(this.sheet, this.aX + this.fW * frame, this.aY + this.fH * id, this.fW, this.fH, x, y, this.fW * scale, this.fH * scale); // La fonction de Manu pour dessiner une image
   }
 }
 
-class animations {
+class entity {
+  constructor() {
+
+  }
+
+  init(animations, hitboxes) {
+
+  }
+
+  draw(x, y, lock, width, height) {
+
+  }
+}
+
+class player extends entity {
+
+}
+
+/*class animations {
   constructor(spritesheet, x, y, animations = [{name: "", frames: [{x: 0, y: 0, w: 0, h: 0}]}]) {
     this.init(spritesheet, animations);
   }
@@ -37,22 +56,4 @@ class animations {
       x, y, w, h
     ); // la fonction de Manu pour dessiner une image
   }
-}
-
-class entity {
-  constructor() {
-
-  }
-
-  init(animations, hitboxes) {
-
-  }
-
-  draw(x, y, lock, width, height) {
-
-  }
-}
-
-class player extends entity {
-
-}
+}*/
