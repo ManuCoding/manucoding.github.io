@@ -14,6 +14,7 @@
 	function hex(n) {
 		return (n=n%256)<16 ? "0"+n.toString(16) : n.toString(16);
 	}
+	for(var thing in Math) global[thing]=Math[thing];
 	for(var thing in library={
 		width:0,
 		height:0,
@@ -50,6 +51,12 @@
 		image(img,dx,dy,dw,dh,sx,sy,sw,sh) {
 			var i=ctx.drawImage;
 			return img ? (img.loaded || img instanceof Image) ? null : isNaN(sh) ? isNaN(dh) ? (isNaN(dx) || isNaN(dy)) ? null : i(img,dx,dy) : i(img,dx,dy,dw,dh) : i(img,sx,sy,sw,sh,dx,dy,dw,dh) : null;
+		},
+		rnd(min=0,max=1,digits=0) {
+			digits=Math.pow(10,digits);
+			min*=digits;
+			nbr=Math.floor(Math.random()*(max*digits-min+1)+min);
+			return nbr/digits;
 		}
 	}) global[thing]=library[thing];
 	var frame=global.requestAnimationFrame;
