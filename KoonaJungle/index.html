@@ -1,19 +1,31 @@
+<!DOCTYPE html>
+
 <html>
 	<head>
 		<title>Koona Jungle</title>
-		<style>
-			html, body, canvas {
-				position: fixed;
-				width: 100%;
-				height: 100%;
-				margin: 0;
-			}
-		</style>
+
+		<meta charset="UTF-8"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+		<link rel="stylesheet" href="style.css"></link>
 	</head>
+
 	<body>
-		<canvas id="canvas" />
+		<div id="menu" class="w3-modal">
+			<div class="w3-modal-content">
+				<span id="closeMenu" class="w3-display-topright w3-button">&times;</span>
+				<p>Some text. Some text. Some text.</p>
+				<p>Some text. Some text. Some text.</p>
+			</div>
+		</div>
+
+		<canvas id="canvas"></canvas>
 	</body>
+
 	<script src="library.js"></script>
 	<script src="classes.js"></script>
+	<script src="events.js"></script>
 	<script src="game.js"></script>
 </html>
