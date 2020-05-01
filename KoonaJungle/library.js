@@ -57,10 +57,34 @@
 			min*=digits;
 			nbr=Math.floor(Math.random()*(max*digits-min+1)+min);
 			return nbr/digits;
+		},
+		mouse:{
+			x:0,
+			y:0,
+			px:0,
+			py:0,
+			down:false
 		}
 	}) global[thing]=library[thing];
 	var frame=global.requestAnimationFrame;
 	var errorCount=0;
+	["down","move","up"].forEach((evt) => {
+		document.addEventListener("mouse"+evt,(e) => {
+			mouse.px=mouse.x;
+			mouse.py=mouse.y;
+			mouse.x=e.pageX;
+			mouse.y=e.pageY;
+			mouse.down=!!(e.buttons%2);
+			var f=global[e.type];
+			typeof f=="function" ? f(e) : null;
+		},false);
+	});
+	["down","up"].forEach((evt) => {
+		document.addEventListener("key"+evt,(key) => {
+			var f=global[key.type];
+			typeof f=="function" ? f(key) : null;
+		},false);
+	});
 	function draw() {
 		if(doc.clientWidth!=global.width || doc.clientHeight!=global.height) resize(doc.clientWidth,doc.clientHeight);
 		try {
