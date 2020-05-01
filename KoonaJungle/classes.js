@@ -1,15 +1,30 @@
 class Spritesheet {
-	constructor(sprite, aX, aY, fW, fH) { // respectivement animation X, animation Y, frame width, frame height
-		this.init(sprite, aX, aY, fW, fH);
+	constructor(sprite, fW, fH, animations) { // respectivement animation X, animation Y, frame width, frame height
+		this.init(sprite, fW, fH, animations);
 	}
 
-	init(sprite, aX, aY, fW, fH) {
+	init(sprite, fW, fH, animations) {
 		this.sheet = loadImage(sprite), // la fonction de Manu pour charger une image
-		this.aX = aX, this.aY = aY, this.fW = fW, this.fH = fH;
+		this.fW = fW, this.fH = fH,
+		this.animationsLength = animations, this.currentFrames = new Array(animations.length).fill(0);
 	}
 
-	draw(id, frame, x, y, scale) {
-		image(this.sheet, this.aX + this.fW * frame, this.aY + this.fH * id, this.fW, this.fH, x, y, this.fW * scale, this.fH * scale); // La fonction de Manu pour dessiner une image
+	draw(id, x, y, scale) {
+		image(
+			this.sheet,
+			this.fW * this.currentFrames[id], this.fH * id, this.fW, this.fH,
+			x, y, this.fW * scale, this.fH * scale
+		); // La fonction de Manu pour dessiner une image
+
+		this.currentFrames[id] = (this.currentFrames[id] + 1) % this.animationsLength[id];
+	}
+
+	reset(id) {
+		this.currentFrames[id] = 0;
+	}
+
+	resetAll() {
+		this.currentFrames = new Array(this.animationsLength.length).fill(0);
 	}
 }
 
@@ -19,7 +34,7 @@ class World {
 	}
 }
 
-var allEntities=[];// TODO: something with this
+var allEntities=[];// CECI NE DEVRAIT PAS ALLER ICI, ÇA DEVRAIT ÊTRE DANS game.js // TODO: something with this
 
 class Entity {
 	constructor(x,y,...args) {
