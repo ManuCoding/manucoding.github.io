@@ -13,22 +13,32 @@ class Spritesheet {
 	}
 }
 
-class Entity {
-	constructor() {
-
-	}
-
-	init(animations, hitboxes) {
-
-	}
-
-	draw(x, y, lock, width, height) {
-
+class World {
+	constructor(levels) {
+		this.levels=levels;
 	}
 }
 
-class Player extends Entity {
+var allEntities=[];// TODO: something with this
 
+class Entity {
+	constructor(x,y,...args) {
+		this.x=x;
+		this.y=y;
+		this.gravity=true;
+		this.hitboxes=[];
+		this.init.apply(this,args);
+	}
+	// May be overriden
+	init() {}
+	update() {}
+	show() {}
+}
+
+class Player extends Entity {
+	init() {
+		//
+	}
 }
 
 /*class Animations {
