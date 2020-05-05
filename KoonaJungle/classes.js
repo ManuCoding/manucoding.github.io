@@ -36,9 +36,18 @@ class World {
 
 class Hitbox {
 	constructor(x,y,w,h) {
-		"xywh".forEach((c,i) => {
-			this[c]=arguments[i];
-		});
+		for(var c in "xywh") {
+			this[c]=arguments.shift()|0;
+		}
+	}
+	hit(other) {
+		if(other instanceof Hitbox) {
+			return this.x<=other.x+other.w
+				&& this.x+this.w>=other.x
+				&& this.y<=other.y+other.h
+				&& this.y+this.h>=other.y;
+		}
+		return false;
 	}
 }
 
