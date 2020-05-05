@@ -64,6 +64,9 @@
 			px:0,
 			py:0,
 			down:false
+		},
+		click(id,onclick) {
+			document.getElementById(id).onclick=onclick;
 		}
 	}) global[thing]=library[thing];
 	var frame=global.requestAnimationFrame;
