@@ -31,8 +31,20 @@ class Spritesheet {
 class World {
 	constructor(levels) {
 		this.levels=levels;
+		this.entities=[];
+	}
+	update() {
+		for(var entity of this.entities) {
+			entity.show();
+			if(debugMode) for(var box of entity.hitboxes) {
+				fill(255,0,0);
+				outline(box.x,box.y,box.w,box.h);
+			}
+		}
 	}
 }
+
+var debugMode=false;
 
 class Hitbox {
 	constructor(x,y,w,h) {
@@ -50,8 +62,6 @@ class Hitbox {
 		return false;
 	}
 }
-
-var allEntities=[];// CECI NE DEVRAIT PAS ALLER ICI, ÇA DEVRAIT ÊTRE DANS game.js // TODO: something with this
 
 class Entity {
 	constructor(x,y,...args) {
