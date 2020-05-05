@@ -34,6 +34,14 @@ class World {
 	}
 }
 
+class Hitbox {
+	constructor(x,y,w,h) {
+		"xywh".forEach((c,i) => {
+			this[c]=arguments[i];
+		});
+	}
+}
+
 var allEntities=[];// CECI NE DEVRAIT PAS ALLER ICI, ÇA DEVRAIT ÊTRE DANS game.js // TODO: something with this
 
 class Entity {
