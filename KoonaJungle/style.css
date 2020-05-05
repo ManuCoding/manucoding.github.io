@@ -1,6 +1,19 @@
+@font-face {
+	font-family: Insomnia;
+	src: url(fonts/insomnia.ttf);
+}
+
 html, body, canvas, main {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	margin: 0;
+}
+
+button, h1 {
+	font-family: Insomnia;
+}
+
+button {
+	display: inline-block;
 }

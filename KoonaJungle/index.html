@@ -8,19 +8,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="https://kit.fontawesome.com/7ecd0180f4.js" crossorigin="anonymous"></script>
 
 		<link rel="stylesheet" href="style.css"></link>
 	</head>
 
 	<body>
 		<canvas id="canvas"></canvas>
+
 		<main>
-			<div id="menu" class="w3-modal">
-				<div class="w3-modal-content">
-					<span id="closeMenu" class="w3-display-topright w3-button">&times;</span>
-					<p>This will be the menu. For now, ESCAPE toggles it.</p>
-					<p>I need the click event for the span element in order to close it with the X button.</p>
-				</div>
+			<div id="mainMenu" class="w3-modal">
+					<button id="closeMainMenu" class="w3-display-topright w3-button w3-white"><i class="fas fa-times fa-lg"></i></button>
+
+					<h1 class="w3-center w3-xxxlarge">Koona Jungle</h1>
+
+					<div class="w3-bar-block w3-padding w3-center">
+						<button id="playGame" class="w3-bar-item w3-margin-top w3-xxlarge">PLAY</button>
+						<button id="openOptionsMenu" class="w3-bar-item w3-margin-top w3-xxlarge">OPTIONS</button>
+						<button id="quit" class="w3-bar-item w3-margin-top w3-xxlarge">QUIT</button>
+					</div>
 			</div>
 		</main>
 	</body>
