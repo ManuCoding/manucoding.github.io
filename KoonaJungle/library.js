@@ -28,6 +28,12 @@
 		rect(x,y,w,h) {
 			ctx.fillRect(x,y,w,h);
 		},
+		outline(x,y,w,h) {
+			rect(x,y,w,1);
+			rect(x+w-1,y,1,h);
+			rect(x,y+h-1,w,1);
+			rect(x,y,1,h);
+		},
 		cut(x,y,w,h) {
 			ctx.clearRect(x,y,w,h);
 		},
