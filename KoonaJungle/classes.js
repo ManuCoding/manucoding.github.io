@@ -33,6 +33,9 @@ class World {
 		this.levels=levels;
 		this.entities=[];
 	}
+	addEntity(entity) {
+		return this.entities[this.entities.push(entity)-1];
+	}
 	update() {
 		for(var entity of this.entities) {
 			entity.show();
@@ -48,8 +51,9 @@ var debugMode=false;
 
 class Hitbox {
 	constructor(x,y,w,h) {
-		for(var c in "xywh") {
-			this[c]=arguments.shift()|0;
+		var args=Array.from(arguments);
+		for(var c of "xywh") {
+			this[c]=args.shift()|0;
 		}
 	}
 	hit(other) {
@@ -60,6 +64,9 @@ class Hitbox {
 				&& this.y+this.h>=other.y;
 		}
 		return false;
+	}
+	rect() {
+		rect(this.x,this.y,this.w,this.h);
 	}
 }
 
@@ -79,7 +86,13 @@ class Entity {
 
 class Player extends Entity {
 	init() {
-		//
+		this.hitboxes=[new Hitbox(0,0,16,16)];
+	}
+	show() {
+		fill("#eee");
+		for(var hitbox of this.hitboxes) {
+			hitbox.rect();
+		}
 	}
 }
 
