@@ -75,6 +75,40 @@
 			document.getElementById(id).onclick=onclick;
 		}
 	}) global[thing]=library[thing];
+	class Vector {
+		constructor(x=0,y=0) {
+			!this.x ? this.x=x : 0;
+			!this.y ? this.y=y : 0;
+			Object.defineProperty(this,"r",{
+				get() {
+					return Math.sqrt(this.x*this.x+this.y*this.y);
+				},
+				set(r=0) {
+					var angle=this.angle;
+					this.x=r*Math.cos(angle|0);
+					this.y=r*Math.sin(angle|0);
+					return r;
+				}
+			});
+			Object.defineProperty(this,"angle",{
+				get() {
+					return this.x ? this.y ? Math.atan(this.y/this.x) : x>0 ? 0 : Math.PI : (this.y ? this.y>0 ? 1 : -1 : 0)*Math.PI/2;
+				},
+				set(angle=0) {
+					var r=this.r;
+					this.x=r*Math.cos(angle|0);
+					this.y=r*Math.sin(angle|0);
+					return this.angle;
+				}
+			});
+		}
+		polar(r=this.r,angle=this.angle) {
+			this.x=r*Math.cos(angle);
+			this.y=r*Math.sin(angle);
+			return this;
+		}
+	}
+	global.Vector=Vector;
 	var frame=global.requestAnimationFrame;
 	var errorCount=0;
 	["down","move","up"].forEach((evt) => {
