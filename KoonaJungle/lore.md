@@ -24,7 +24,7 @@ Nom : Daisy
 ## Père de la fillette
 Nom : Clover
 
-**L'histoire**
+# L'histoire
 
 _Les événements suivants sont tous en ordre chronologique_
 
