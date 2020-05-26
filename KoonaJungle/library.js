@@ -43,6 +43,18 @@
 			library.rect(0,0,canvas.width,canvas.height);
 			return library.fill(fill);
 		},
+		loadJSON(src,ready=o=>o) {
+			var request=XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+			toLoad++;
+			request.onreadystatechange=() => {
+				if(request.readyState==4 && request.status==200) {
+					typeof ready=="function" ? ready(JSON.parse(request.responseText)) : 0;
+					loaded++;
+				}
+			};
+			request.open("GET",src,true);
+			request.send();
+		},
 		loadImage(src) {
 			var img=new Image(src);
 			toLoad++;
