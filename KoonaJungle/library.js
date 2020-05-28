@@ -14,7 +14,7 @@
 	function hex(n) {
 		return (n=n%256)<16 ? "0"+n.toString(16) : n.toString(16);
 	}
-	for(var thing in Math) global[thing]=Math[thing];
+	for(var thing of Object.getOwnPropertyNames(Math)) global[thing]=Math[thing];
 	for(var thing in library={
 		width:0,
 		height:0,
