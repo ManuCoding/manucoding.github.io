@@ -10,6 +10,7 @@ cb-chr.string {color: #00c8ff}
 /* Editor default dark theme (when adding the .cb-dark class) */
 codebob-editor.cb-dark {
 	background: #202020;
+	color: #eee;
 }
 codebob-editor.cb-dark cb-cursor {
 	border-left-color: #eee;
