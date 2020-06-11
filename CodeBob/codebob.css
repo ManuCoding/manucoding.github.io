@@ -45,8 +45,9 @@ cb-scroll, cb-display, cb-selects, cb-cursors, cb-gutters, cb-lines {
 }
 cb-display {
 	position: relative;
+	overflow: overlay;
 }
-codebob-editor[line-numbers] cb-scroll {
+codebob-editor[line-numbers] cb-display {
 	padding-left: 30px;
 	padding-left: var(--gutter-width);
 }
@@ -61,10 +62,20 @@ cb-cursor {
 	width: 0px;
 }
 cb-gutters {
-	left: -30px;
-	left: calc(-1 * var(--gutter-width));
+	left: 0px;
+	/* left: calc(-1 * var(--gutter-width)); */
 	width: 30px;
 	width: var(--gutter-width);
+	counter-reset: line-numbers;
+}
+cb-gutter {
+	counter-increment: line-numbers;
+}
+cb-gutter:before {
+	content: counter(line-numbers);
+	display: block;
+	position: absolute;
+	right: 2px;
 }
 cb-line {
 

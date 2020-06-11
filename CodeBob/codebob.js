@@ -204,7 +204,8 @@
 						this.screenY=this.line*measure.height;
 						// Maybe some more calculations...
 
-						this.curEl.style.transform="translate("+this.screenX+"px,"+this.screenY+"px)";
+						// Using Math.floor to get integer position
+						this.curEl.style.transform="translate("+Math.floor(this.screenX)+"px,"+Math.floor(this.screenY)+"px)";
 					}
 					this.moveRL=function(dir) {
 						if(dir>0 || (typeof dir=="string" && dir.toLowerCase()=="right")) {
@@ -223,6 +224,9 @@
 					}
 				}
 			}
+
+			this.elements.gutters.add($el("cb-gutter","",[],{innerHTML:"&#8203;"}));
+
 			var forceFocus=!!this.options.autofocus;
 
 			// For debugging...
