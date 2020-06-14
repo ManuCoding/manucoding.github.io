@@ -1,0 +1,14 @@
+# Main foo scope
+foo {
+	bar message="Hello, World!";
+	# Foo namespace:
+	#	- foo (print)
+	#	- bar (readline)
+	foo.foo(message);
+	foo(foo) {
+		bar ok=a(3);
+	}
+}
+foo somefunction(somearg) {
+	# This is a function
+}
